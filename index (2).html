@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile - Biodata</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --surface2: #1c1c26;
+      --accent: #c8f230;
+      --purple: #7b61ff;
+      --pink: #ff6b9d;
+      --cyan: #30e8f2;
+      --orange: #ff8c42;
+      --text: #f0f0f0;
+      --muted: #7a7a8c;
+      --border: rgba(255,255,255,0.06);
+      --radius: 16px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: rgba(10,10,15,0.9) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      height: 64px;
+    }
+
+    .navbar-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      background: linear-gradient(90deg, var(--accent), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-link {
+      color: var(--muted) !important;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover { color: var(--accent) !important; }
+
+    .navbar-toggler {
+      border: none;
+      outline: none;
+      box-shadow: none !important;
+    }
+
+    .navbar-toggler-icon {
+      filter: invert(1);
+    }
+
+    /* ── HERO ── */
+    #header {
+      min-height: 90vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #header::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(123,97,255,0.15) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(200,242,48,0.25);
+      background: rgba(200,242,48,0.05);
+      padding: 6px 14px;
+      border-radius: 100px;
+      width: fit-content;
+      margin-bottom: 28px;
+    }
+
+    .hero-left h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-left p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 420px;
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+
+    .btn-primary-custom {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--cyan));
+      color: #0a0a0f;
+    }
+
+    .btn-primary-custom:hover { opacity: 0.85; transform: translateY(-2px); color: #0a0a0f; }
+
+    .btn-outline-custom {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.2s;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline-custom:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 4/5;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(200,242,48,0.08);
+    }
+
+    .img-placeholder {
+      width: 100%; height: 100%;
+      background: var(--surface2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .img-placeholder svg { opacity: 0.2; }
+
+    .badge-float {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      backdrop-filter: blur(12px);
+      z-index: 2;
+    }
+
+    .badge-tl { top: 24px; left: -16px; color: var(--cyan); border-color: rgba(48,232,242,0.2); }
+    .badge-br { bottom: 24px; right: -16px; color: var(--pink); border-color: rgba(255,107,157,0.2); }
+
+    /* ── SECTION BASE ── */
+    .section-pad { padding: 96px 64px; }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── BIODATA ── */
+    #biodata {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bio-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .bio-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .bio-box:nth-child(1)::before { background: var(--accent); }
+    .bio-box:nth-child(2)::before { background: var(--purple); }
+    .bio-box:nth-child(3)::before { background: var(--pink); }
+    .bio-box:nth-child(4)::before { background: var(--cyan); }
+    .bio-box:nth-child(5)::before { background: var(--orange); }
+    .bio-box:nth-child(6)::before { background: linear-gradient(90deg, var(--accent), var(--cyan)); }
+
+    .bio-box:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.1);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .bio-icon { font-size: 1.4rem; margin-bottom: 12px; }
+
+    .bio-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .bio-value {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    /* ── PORTOFOLIO ── */
+    #portofolio { background: var(--bg); }
+
+    .porto-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+
+    .porto-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .porto-card.card-1:hover { border-color: rgba(200,242,48,0.35); }
+    .porto-card.card-2:hover { border-color: rgba(123,97,255,0.35); }
+    .porto-card.card-3:hover { border-color: rgba(255,107,157,0.35); }
+
+    .porto-thumb {
+      width: 100%;
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .card-1 .porto-thumb { background: linear-gradient(135deg, #0f1f0a, #1a3a0d); }
+    .card-2 .porto-thumb { background: linear-gradient(135deg, #0f0a1f, #1a0d3a); }
+    .card-3 .porto-thumb { background: linear-gradient(135deg, #1f0a14, #3a0d1e); }
+
+    .thumb-ph { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+    .porto-info {
+      padding: 18px 22px;
+      border-top: 1px solid var(--border);
+    }
+
+    .chip {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 8px;
+    }
+
+    .card-1 .chip { background: rgba(200,242,48,0.1); color: var(--accent); }
+    .card-2 .chip { background: rgba(123,97,255,0.1); color: var(--purple); }
+    .card-3 .chip { background: rgba(255,107,157,0.1); color: var(--pink); }
+
+    .porto-info h4 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .porto-info p { color: var(--muted); font-size: 0.8rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 28px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    footer span { color: var(--accent); }
+
+    /* ── MODAL CUSTOM ── */
+    .modal-content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--text);
+    }
+
+    .modal-header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 28px;
+    }
+
+    .modal-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .btn-close {
+      filter: invert(1);
+      opacity: 0.5;
+    }
+
+    .modal-body { padding: 28px; }
+    .modal-footer {
+      border-top: 1px solid var(--border);
+      padding: 16px 28px;
+    }
+
+    .modal-icon { font-size: 2.5rem; margin-bottom: 12px; }
+
+    .modal-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-detail:last-child { border-bottom: none; }
+
+    .modal-detail-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 600;
+      min-width: 80px;
+      margin-top: 2px;
+    }
+
+    .modal-detail-value {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .navbar { padding: 0 32px; }
+      .section-pad { padding: 72px 32px; }
+      .hero-left { padding: 60px 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 0 20px; }
+      .hero-right { order: -1; padding: 40px 20px 0; }
+      .hero-img-wrap { max-width: 260px; aspect-ratio: 1/1; }
+      .badge-float { display: none; }
+      .hero-left { padding: 32px 20px 64px; align-items: center; text-align: center; }
+      .hero-left p { max-width: 100%; }
+      .section-pad { padding: 64px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR (Bootstrap) -->
+<nav class="navbar navbar-expand-md sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">MyProfile ✦</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav gap-3">
+        <li class="nav-item"><a class="nav-link" href="#header">Header</a></li>
+        <li class="nav-item"><a class="nav-link" href="#biodata">Biodata</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portofolio">Portofolio</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO (Bootstrap Grid) -->
+<section id="header">
+  <div class="row g-0 min-vh-90 align-items-center">
+    <div class="col-md-6 hero-left">
+      <span class="hero-tag">✦ Selamat Datang</span>
+      <h1>Halo, Saya<br/><span class="gradient-text">Sultan Saladin Pahlevi</span> 👋</h1>
+      <p>Ini adalah halaman profil pribadi Saya. IT student di SMKN 26 Jakarta yang suka desain, musik, dan coding.</p>
+      <div class="d-flex gap-3 flex-wrap">
+        <a href="#biodata" class="btn-primary-custom">Lihat Biodata →</a>
+        <a href="#portofolio" class="btn-outline-custom">Portofolio</a>
+      </div>
+    </div>
+    <div class="col-md-6 hero-right">
+      <div class="hero-img-wrap">
+        <!-- Ganti dengan: <img src="foto.jpg" alt="Foto"/> -->
+        <img src="foto.jpg" alt="Foto Saya" style="width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="badge-float badge-tl">🎓 SMKN 26 Jakarta</div>
+      <div class="badge-float badge-br">💻 IT Student</div>
+    </div>
+  </div>
+</section>
+
+<!-- BIODATA (Bootstrap Grid + Modal trigger) -->
+<section id="biodata" class="section-pad">
+  <div class="text-center mb-5">
+    <div class="section-tag" style="background:rgba(200,242,48,0.1);color:var(--accent)">About Me</div>
+    <h2 class="section-title">Biodata Saya</h2>
+    <p style="color:var(--muted)">Informasi singkat tentang diri gue</p>
+  </div>
+  <div class="row g-3 justify-content-center" style="max-width:960px;margin:0 auto">
+    <!-- Setiap bio-box bisa diklik untuk buka modal detail -->
+    <div class="col-6 col-md-4">
+      <div class="bio-box h-100" data-bs-toggle="modal" data-bs-target="#modalBiodata">
+        <div class="bio-icon">👤</div>
+        <div class="bio-label">Full Name</div>
+        <div class="bio-value">Sultan Saladin Pahlevi</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4">
+      <div class="bio-box h-100" data-bs-toggle="modal" data-bs-target="#modalBiodata">
+        <div class="bio-icon">🎓</div>
+        <div class="bio-label">Education</div>
+        <div class="bio-value">SMKN 26 Jakarta</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4">
+      <div class="bio-box h-100" data-bs-toggle="modal" data-bs-target="#modalBiodata">
+        <div class="bio-icon">💼</div>
+        <div class="bio-label">Pekerjaan</div>
+        <div class="bio-value">Pelajar / IT Student</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4">
+      <div class="bio-box h-100" data-bs-toggle="modal" data-bs-target="#modalBiodata">
+        <div class="bio-icon">📧</div>
+        <div class="bio-label">Contact</div>
+        <div class="bio-value">kukuruyuk@example.com</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4">
+      <div class="bio-box h-100" data-bs-toggle="modal" data-bs-target="#modalBiodata">
+        <div class="bio-icon">🎯</div>
+        <div class="bio-label">Hobi</div>
+        <div class="bio-value">Desain, Musik, Gaming</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4">
+      <div class="bio-box h-100" data-bs-toggle="modal" data-bs-target="#modalBiodata">
+        <div class="bio-icon">📍</div>
+        <div class="bio-label">Alamat</div>
+        <div class="bio-value">Jakarta, Indonesia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTOFOLIO (Bootstrap Grid + Modal trigger) -->
+<section id="portofolio" class="section-pad">
+  <div class="text-center mb-5">
+    <div class="section-tag" style="background:rgba(123,97,255,0.1);color:var(--purple)">My Work</div>
+    <h2 class="section-title">Portofolio</h2>
+    <p style="color:var(--muted)">Karya-karya yang pernah gue buat</p>
+  </div>
+  <div class="row g-4 justify-content-center" style="max-width:1000px;margin:0 auto">
+    <div class="col-12 col-md-4">
+      <div class="porto-card card-1 h-100" data-bs-toggle="modal" data-bs-target="#modalPorto1">
+        <div class="porto-thumb">
+          <div class="thumb-ph">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>350 × 200</span>
+          </div>
+        </div>
+        <div class="porto-info">
+          <span class="chip">Web Design</span>
+          <h4>Proyek 1</h4>
+          <p>Deskripsi proyek pertama kamu</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="porto-card card-2 h-100" data-bs-toggle="modal" data-bs-target="#modalPorto2">
+        <div class="porto-thumb">
+          <div class="thumb-ph">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>350 × 200</span>
+          </div>
+        </div>
+        <div class="porto-info">
+          <span class="chip">UI/UX</span>
+          <h4>Proyek 2</h4>
+          <p>Deskripsi proyek kedua kamu</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="porto-card card-3 h-100" data-bs-toggle="modal" data-bs-target="#modalPorto3">
+        <div class="porto-thumb">
+          <div class="thumb-ph">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>350 × 200</span>
+          </div>
+        </div>
+        <div class="porto-info">
+          <span class="chip">Coding</span>
+          <h4>Proyek 3</h4>
+          <p>Deskripsi proyek ketiga kamu</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Dibuat dengan <span>♥</span> oleh <span>Sultan</span> &copy; 2025</p>
+</footer>
+
+<!-- ═══════════════════════════════════ -->
+<!-- MODAL: Biodata Detail -->
+<!-- ═══════════════════════════════════ -->
+<div class="modal fade" id="modalBiodata" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">👤 Detail Biodata</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-detail">
+          <span class="modal-detail-label">Nama</span>
+          <span class="modal-detail-value">Sultan Saladin Pahlevi</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Sekolah</span>
+          <span class="modal-detail-value">SMKN 26 Jakarta</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Status</span>
+          <span class="modal-detail-value">Pelajar / IT Student</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Email</span>
+          <span class="modal-detail-value">kukuruyuk@example.com</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Hobi</span>
+          <span class="modal-detail-value">Desain, Musik, Gaming</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Kota</span>
+          <span class="modal-detail-value">Jakarta, Indonesia</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-outline-custom" data-bs-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- MODAL: Proyek 1 -->
+<!-- ═══════════════════════════════════ -->
+<div class="modal fade" id="modalPorto1" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color:var(--accent)">🌿 Proyek 1 — Web Design</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div style="background:linear-gradient(135deg,#0f1f0a,#1a3a0d);border-radius:12px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--muted);font-size:0.8rem;">
+          Preview Proyek
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Nama</span>
+          <span class="modal-detail-value">Proyek 1</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Kategori</span>
+          <span class="modal-detail-value">Web Design</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Tools</span>
+          <span class="modal-detail-value">HTML, CSS, Bootstrap</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Deskripsi</span>
+          <span class="modal-detail-value" style="font-family:'DM Sans',sans-serif;font-weight:400;color:var(--muted)">Deskripsi proyek pertama kamu. Ceritain apa yang lo buat dan tech stack yang dipake.</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-outline-custom" data-bs-dismiss="modal">Tutup</button>
+        <a href="#" class="btn-primary-custom">Lihat Live →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- MODAL: Proyek 2 -->
+<!-- ═══════════════════════════════════ -->
+<div class="modal fade" id="modalPorto2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color:var(--purple)">🎨 Proyek 2 — UI/UX</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div style="background:linear-gradient(135deg,#0f0a1f,#1a0d3a);border-radius:12px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--muted);font-size:0.8rem;">
+          Preview Proyek
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Nama</span>
+          <span class="modal-detail-value">Proyek 2</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Kategori</span>
+          <span class="modal-detail-value">UI/UX Design</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Tools</span>
+          <span class="modal-detail-value">Figma, Framer</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Deskripsi</span>
+          <span class="modal-detail-value" style="font-family:'DM Sans',sans-serif;font-weight:400;color:var(--muted)">Deskripsi proyek kedua kamu. Ceritain apa yang lo buat dan tech stack yang dipake.</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-outline-custom" data-bs-dismiss="modal">Tutup</button>
+        <a href="#" class="btn-primary-custom">Lihat Live →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- MODAL: Proyek 3 -->
+<!-- ═══════════════════════════════════ -->
+<div class="modal fade" id="modalPorto3" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color:var(--pink)">💻 Proyek 3 — Coding</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div style="background:linear-gradient(135deg,#1f0a14,#3a0d1e);border-radius:12px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--muted);font-size:0.8rem;">
+          Preview Proyek
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Nama</span>
+          <span class="modal-detail-value">Proyek 3</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Kategori</span>
+          <span class="modal-detail-value">Coding / Dev</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Tools</span>
+          <span class="modal-detail-value">HTML, CSS, JS</span>
+        </div>
+        <div class="modal-detail">
+          <span class="modal-detail-label">Deskripsi</span>
+          <span class="modal-detail-value" style="font-family:'DM Sans',sans-serif;font-weight:400;color:var(--muted)">Deskripsi proyek ketiga kamu. Ceritain apa yang lo buat dan tech stack yang dipake.</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-outline-custom" data-bs-dismiss="modal">Tutup</button>
+        <a href="#" class="btn-primary-custom">Lihat Live →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
