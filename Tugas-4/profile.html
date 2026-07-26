@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sultan — Profile</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="edit.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top custom-nav">
+    <div class="container">
+      <div class="d-flex w-100 align-items-center justify-content-between flex-wrap">
+        <div class="d-none d-md-flex gap-4">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+        </div>
+
+        <a href="#home" class="navbar-brand mx-auto logo">
+          <span class="text-accent">&lt;</span>Sultan<span class="text-accent">/&gt;</span>
+        </a>
+
+        <div class="d-none d-md-flex gap-4">
+          <a href="#project" class="nav-link">Project</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+
+        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse w-100 d-md-none" id="mobileNav">
+        <div class="d-flex flex-column text-center gap-2 pt-3 pb-2">
+          <a href="#home" class="nav-link">home</a>
+          <a href="#about" class="nav-link">about</a>
+          <a href="#project" class="nav-link">project</a>
+          <a href="#contact" class="nav-link">contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+<section id="home" class="section hero d-flex align-items-center">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-md-7 order-2 order-md-1">
+        <p class="eyebrow">// status: online</p>
+        <h1 class="hero-title">Halo, saya <span class="text-accent">Sultan</span>.</h1>
+        <p class="hero-sub">Suka utak-atik jaringan, server, dan konfigurasi yang bikin semua device saling ngobrol dengan baik.</p>
+        <a href="#project" class="btn btn-outline-accent">lihat project →</a>
+      </div>
+      <div class="col-md-5 order-1 order-md-2 text-center">
+        <img src="SULTAN SALADIN PAHLEVI. 0093164954 (1).png" class="img-fluid rounded-4 hero-photo" alt="Foto Sultan">
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <p class="eyebrow">01 — about</p>
+      <h2 class="section-title mb-4">Tentang saya</h2>
+      <div class="row align-items-center g-4">
+        <div class="col-md-6">
+          <p class="about-text">
+            Saya anak SIJA (Sistem Informasi Jaringan dan Aplikasi) yang senang eksplorasi topologi jaringan,
+            dari VLAN, routing, sampai server Linux. Selain itu, saya juga suka ngulik ide-ide produk dan aplikasi baru.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <ul class="stack list-unstyled">
+            <li><span class="ip">10.0.0.1</span> Networking &amp; Routing</li>
+            <li><span class="ip">10.0.0.2</span> Linux Server</li>
+            <li><span class="ip">10.0.0.3</span> Cisco &amp; MikroTik</li>
+            <li><span class="ip">10.0.0.4</span> Product Ideation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section id="project" class="section section-alt">
+    <div class="container">
+      <p class="eyebrow">02 — project</p>
+      <h2 class="section-title mb-4">Project saya</h2>
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <div class="card project-card h-100">
+            <div class="card-body">
+              <span class="card-tag">jaringan</span>
+              <h3 class="h5 mt-2">Topologi 3 Router</h3>
+              <p class="card-text">Konfigurasi IPv4/IPv6, Router-on-a-Stick, VLAN, static routing, web server, dan DNS.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card project-card h-100">
+            <div class="card-body">
+              <span class="card-tag">server</span>
+              <h3 class="h5 mt-2">Linux Server Stack</h3>
+              <p class="card-text">DNS/BIND9, Apache, Postfix/Dovecot, Roundcube, terintegrasi dengan MikroTik CHR.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card project-card h-100">
+            <div class="card-body">
+              <span class="card-tag">produk</span>
+              <h3 class="h5 mt-2">App Finance Anti-FOMO</h3>
+              <p class="card-text">Ide aplikasi keuangan berbasis AI untuk mencegah belanja impulsif.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <p class="eyebrow">03 — contact</p>
+      <h2 class="section-title mb-3">Kontak saya</h2>
+      <p class="text-muted mb-4">Ada project atau ide seru? Gas hubungin saya.</p>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <a href="mailto:sultan@example.com" class="contact-item d-block">
+            <span class="ip">mail</span> 123123@example.com
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="#" class="contact-item d-block">
+            <span class="ip">gh</span> github.com/utasurutan
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="#" class="contact-item d-block">
+            <span class="ip">ig</span> @tann_sultan17
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer text-center">
+    <p>© 2026 sultan — dibuat dengan HTML, CSS &amp; Bootstrap.</p>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
