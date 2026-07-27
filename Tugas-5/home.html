@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TokoKu - Belanja Online</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="navbar">
+    <div class="navbar-top">
+      <div class="logo">
+        <span class="logo-toko">Toko</span><span class="logo-ku">Ku</span>
+      </div>
+
+      <div class="search-bar">
+        <select class="search-category">
+          <option value="semua">Semua</option>
+          <option value="tas">Tas</option>
+          <option value="sepatu">Sepatu</option>
+          <option value="aksesoris">Aksesoris</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="Cari produk di TokoKu...">
+        <button class="search-btn" id="searchBtn">🔍</button>
+      </div>
+
+      <div class="navbar-right">
+        <div class="nav-item">
+          <span class="nav-line1">Halo, Masuk</span>
+          <span class="nav-line2">Akun & Daftar</span>
+        </div>
+        <div class="nav-item">
+          <span class="nav-line1">Pesanan</span>
+          <span class="nav-line2">& Riwayat</span>
+        </div>
+        <div class="nav-item cart">
+          🛒 <span class="cart-count" id="cartCount">0</span>
+          <span class="nav-line2">Keranjang</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ FILTER KATEGORI ============ -->
+    <nav class="navbar-bottom">
+      <button class="filter-btn active" data-category="semua">Semua Produk</button>
+      <button class="filter-btn" data-category="tas">Tas</button>
+      <button class="filter-btn" data-category="sepatu">Sepatu</button>
+      <button class="filter-btn" data-category="aksesoris">Aksesoris</button>
+    </nav>
+  </header>
+
+  <!-- ============ HERO BANNER ============ -->
+  <div class="hero-banner">
+    <div class="hero-text">
+      <h1>Diskon Spesial Minggu Ini</h1>
+      <p>Belanja hemat, kualitas terjamin, gratis ongkir se-Indonesia</p>
+    </div>
+  </div>
+
+  <!-- ============ KONTEN UTAMA ============ -->
+  <main class="main-content">
+    <div class="content-header">
+      <h2 id="sectionTitle">Semua Produk</h2>
+      <span id="productCount" class="product-count"></span>
+    </div>
+
+    <!-- Produk akan di-render otomatis oleh JavaScript di sini -->
+    <div class="product-grid" id="productGrid"></div>
+
+    <p class="empty-state" id="emptyState" style="display:none;">
+      Tidak ada produk pada kategori ini.
+    </p>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">Kembali ke Atas</div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Tentang Kami</h4>
+        <p>Karier</p>
+        <p>Berita</p>
+        <p>Blog TokoKu</p>
+      </div>
+      <div class="footer-col">
+        <h4>Bantu Kamu</h4>
+        <p>Akun Kamu</p>
+        <p>Lacak Pesanan</p>
+        <p>Bantuan</p>
+      </div>
+      <div class="footer-col">
+        <h4>Bekerja Sama</h4>
+        <p>Jual di TokoKu</p>
+        <p>Jadi Mitra</p>
+        <p>Iklankan Produk</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 TokoKu.com — Proyek Latihan E-Commerce (Tugas Sekolah)
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
